@@ -72,6 +72,9 @@ public class Cafe extends Building{
         System.out.println("Don't worry, we just restocked!");
     }
 
+    public void showOptions() {
+        System.out.println("Available options at " + this.name + ":\n + sellCoffee(size, sugar, cream)");
+    }
 
     /**
      * Main method for the Cafe class, used for testing
@@ -79,8 +82,9 @@ public class Cafe extends Building{
      */
     public static void main(String[] args) {
         Cafe myCafe = new Cafe("Campus Cafe", "Location", 1, 100, 100, 100, 100);
-        myCafe.sellCoffee(24, 10, 14);
-        myCafe.sellCoffee(200, 0, 0);
+        //myCafe.sellCoffee(24, 10, 14);
+        //myCafe.sellCoffee(200, 0, 0);
+        myCafe.showOptions();
 
     }
     

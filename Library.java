@@ -107,14 +107,19 @@ public class Library extends Building{
     System.out.println(this.collection.toString());
   }
 
+  public void showOptions() {
+    System.out.println("Available options at " + this.name + ":\n + addTitle(title) \n + removeTitle(title) \n + checkOut(title) \n + returnBook(title) \n + containsTitle(title) \n + isAvailable(title) \n + printCollection()");
+}
+
   /**
    * The main method of Library, used for testing the methods of the class
    * @param args command line arguments
    */
   public static void main(String[] args) {
     Library nielson = new Library("Nielson", "Nielson rd", 3);
-    String book = "wuthering heights";
-    nielson.containsTitle(book);
+    //String book = "wuthering heights";
+    //nielson.containsTitle(book);
+    nielson.showOptions();
       
   }
   

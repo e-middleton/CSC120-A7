@@ -81,6 +81,10 @@ public class House extends Building{ //inherits from Building class (subclass)
     }
   }
 
+  public void showOptions() {
+    System.out.println("Available options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn(name) \n + moveOut(name) \n + isResident(person)");
+}
+
   /**
    * Main method for the house function, used for testing methods
    * @param args the command line arguments
@@ -89,9 +93,10 @@ public class House extends Building{ //inherits from Building class (subclass)
     House Morrow = new House ("Morrow", "Paradise Road", 5, false);
     String student = "Jenny";
     Morrow.moveIn(student);
-    int ppl = Morrow.nResidents();
-    System.out.println(ppl);
-    System.out.println(Morrow.isResident("Jenny"));
+    //int ppl = Morrow.nResidents();
+    //System.out.println(ppl);
+    //System.out.println(Morrow.isResident("Jenny"));
+    Morrow.showOptions();
 
   }
 
