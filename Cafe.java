@@ -56,14 +56,14 @@ public class Cafe extends Building{
         System.out.println("Enjoy your coffee!");
     }
 
-    public void sellCoffee(int size){
+    public void sellCoffee(){
         if(this.nCups > 0){
             this.nCups -= 1;
         } else{
             restock(0, 0, 0, 5);
         }
-        if(this.nCoffeeOunces - size >= 0){
-            this.nCoffeeOunces -= size;
+        if(this.nCoffeeOunces - 8 >= 0){
+            this.nCoffeeOunces -= 8;
             System.out.println("Enjoy your black coffee!");
         } else{
             restock(20, 0, 0, 0);
@@ -108,7 +108,7 @@ public class Cafe extends Building{
         //myCafe.sellCoffee(24, 10, 14);
         //myCafe.sellCoffee(200, 0, 0);
         //myCafe.showOptions();
-        myCafe.sellCoffee(24);
+        myCafe.sellCoffee();
 
     }
     
