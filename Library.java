@@ -27,6 +27,14 @@ public class Library extends Building{
     this.collection.put(title, true);
   }
 
+  public void addTitle(){
+    this.collection.put("Bluebeard", true);
+    this.collection.put("We Have Always Lived in the Castle", true);
+    this.collection.put("Dracula", true);
+    this.collection.put("Perfume - Patrick Suskind", true);
+    this.collection.put("If an Egyptian Cannot Speak English", true);
+  }
+
   /**
    * Method for removing a title from the library, first checking that the title already exists in the collection
    * @param title the title of the book being removed
@@ -120,7 +128,9 @@ public class Library extends Building{
     Library nielson = new Library("Nielson", "Nielson rd", 3);
     //String book = "wuthering heights";
     //nielson.containsTitle(book);
-    nielson.showOptions();
+    nielson.addTitle();
+    nielson.printCollection();
+    //nielson.showOptions();
 
       
   }
