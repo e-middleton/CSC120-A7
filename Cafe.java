@@ -56,6 +56,20 @@ public class Cafe extends Building{
         System.out.println("Enjoy your coffee!");
     }
 
+    public void sellCoffee(int size){
+        if(this.nCups > 0){
+            this.nCups -= 1;
+        } else{
+            restock(0, 0, 0, 5);
+        }
+        if(this.nCoffeeOunces - size >= 0){
+            this.nCoffeeOunces -= size;
+            System.out.println("Enjoy your black coffee!");
+        } else{
+            restock(20, 0, 0, 0);
+        }
+    }
+
     /**
      * Method for restocking the inventory, called if the available amount of an item is too low to make a sale
      * @param nCoffeeOunces number of coffee ounces being added
@@ -72,8 +86,17 @@ public class Cafe extends Building{
         System.out.println("Don't worry, we just restocked!");
     }
 
+    public void goToFloor(int floorNum){
+        if(floorNum == 1){
+            super.goToFloor(floorNum);
+        } else{
+            throw new RuntimeException("Floor #" + floorNum + " is for employees. Only Floor #1 is open to patrons.");
+        }
+    }
+
     public void showOptions() {
-        System.out.println("Available options at " + this.name + ":\n + sellCoffee(size, sugar, cream)");
+        super.showOptions();
+        System.out.println(" + sellCoffee(size, sugar, cream)");
     }
 
     /**
@@ -84,7 +107,8 @@ public class Cafe extends Building{
         Cafe myCafe = new Cafe("Campus Cafe", "Location", 1, 100, 100, 100, 100);
         //myCafe.sellCoffee(24, 10, 14);
         //myCafe.sellCoffee(200, 0, 0);
-        myCafe.showOptions();
+        //myCafe.showOptions();
+        myCafe.sellCoffee(24);
 
     }
     

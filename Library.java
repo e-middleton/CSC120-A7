@@ -108,8 +108,9 @@ public class Library extends Building{
   }
 
   public void showOptions() {
-    System.out.println("Available options at " + this.name + ":\n + addTitle(title) \n + removeTitle(title) \n + checkOut(title) \n + returnBook(title) \n + containsTitle(title) \n + isAvailable(title) \n + printCollection()");
-}
+    super.showOptions();
+    System.out.println(" + addTitle(title) \n + removeTitle(title) \n + checkOut(title) \n + returnBook(title) \n + containsTitle(title) \n + isAvailable(title) \n + printCollection()");
+  }
 
   /**
    * The main method of Library, used for testing the methods of the class
@@ -120,6 +121,7 @@ public class Library extends Building{
     //String book = "wuthering heights";
     //nielson.containsTitle(book);
     nielson.showOptions();
+
       
   }
   

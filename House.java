@@ -4,7 +4,8 @@ import java.util.ArrayList;
  */
 public class House extends Building{ //inherits from Building class (subclass)
   private ArrayList<String> residents; //who lives in this house?
-  private Boolean hasDiningRoom;
+  private boolean hasDiningRoom;
+  private boolean hasElevator;
 
   /**
    * Constructor for the House class
@@ -13,11 +14,12 @@ public class House extends Building{ //inherits from Building class (subclass)
    * @param nFloors how many floors the house has
    * @param hasDiningRoom whether or not the house contains a dining room
    */
-  public House(String name, String address, int nFloors, boolean hasDiningRoom) {
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
     super(name, address, nFloors); //set up house using building constructor
     System.out.println("You have built a house: 🏠");
     residents = new ArrayList<String>();
     this.hasDiningRoom = hasDiningRoom;
+    this.hasElevator = hasElevator;
   }
 
   /**
@@ -26,6 +28,10 @@ public class House extends Building{ //inherits from Building class (subclass)
    */
   public boolean hasDiningRoom(){
     return this.hasDiningRoom;
+  }
+
+  public boolean hasElevator(){
+    return this.hasElevator;
   }
 
   /**
@@ -42,15 +48,11 @@ public class House extends Building{ //inherits from Building class (subclass)
    * @param name the name of the person who wants to move in
    */
   public void moveIn(String name){
-    try { 
-      if(!(this.isResident(name))){ //checks to see if a perosn is not a resident already
-        residents.add(name);
-        System.out.println("Welcome to Morrow, " + name + "!");
-      } else {
-        throw new RuntimeException("This person is already resident"); //technically makes it so that people of the same name cannot live in the same house
-      }
-    } catch (RuntimeException e){
-      System.out.println(e + ", cannot move in.");
+    if(!(this.isResident(name))){ //checks to see if a perosn is not a resident already
+      residents.add(name);
+      //System.out.println("Welcome to " this.name + ", " + name + "!");
+    } else {
+      throw new RuntimeException("This person is already resident"); //technically makes it so that people of the same name cannot live in the same house
     }
   }
 
@@ -62,10 +64,23 @@ public class House extends Building{ //inherits from Building class (subclass)
   public String moveOut(String name){
     if(this.isResident(name)){ //checks if a person is a resident
         residents.remove(name);
+        return name;
     } else{
-      System.out.println(name + " is not a resident in " + this.name + " they are unable to move out.");
+      throw new RuntimeException(name + " is not a resident in " + this.name + " they are unable to move out.");
     }
-    return name;
+  }
+
+  //moves out all residents
+  public void moveOut(){
+    int originalResidents = this.nResidents(); //index variable to prevent indexing problems with .size shrinking when people move out
+    if(originalResidents!= 0){
+      for(int i = 0; i < originalResidents; i++){
+        System.out.println(this.residents.get(0) + " has moved out of " + this.name + ".");
+        this.residents.remove(0);
+      } System.out.println(this.name + " is empty.");
+    } else{
+      System.out.println(this.name + " has no residents to move out.");
+    }
   }
 
   /**
@@ -81,23 +96,39 @@ public class House extends Building{ //inherits from Building class (subclass)
     }
   }
 
+  public void goToFloor(int floorNum) {
+    if (this.hasElevator){ //if there is an elevator in the house, you can pop around as u please
+      super.goToFloor(floorNum);
+    } else{
+      if((floorNum - this.activeFloor) == 1 || (floorNum - this.activeFloor) == -1){
+        super.goToFloor(floorNum);
+      } else{
+        throw new RuntimeException("You cannot go directly from floor " + this.activeFloor + " to floor " + floorNum + ". There is no elevator.");
+      }
+    }
+  }
+
   public void showOptions() {
-    System.out.println("Available options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn(name) \n + moveOut(name) \n + isResident(person)");
-}
+    super.showOptions();
+    System.out.println(" + hasDiningRoom() \n + nResidents() \n + moveIn(name) \n + moveOut(name) \n + isResident(person)");
+  }
 
   /**
    * Main method for the house function, used for testing methods
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-    House Morrow = new House ("Morrow", "Paradise Road", 5, false);
+    House morrow = new House ("Morrow", "Paradise Road", 5, false, true);
     String student = "Jenny";
-    Morrow.moveIn(student);
-    //int ppl = Morrow.nResidents();
-    //System.out.println(ppl);
-    //System.out.println(Morrow.isResident("Jenny"));
-    Morrow.showOptions();
+    morrow.moveIn(student);
+    String student2 = "Jeremy";
+    String student3 = "Maeve";
+    String student4 = "Huiying";
+    morrow.moveIn(student2);
+    morrow.moveIn(student3);
+    morrow.moveIn(student4);
+    morrow.moveOut();
+    
 
   }
-
 }

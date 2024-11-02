@@ -66,6 +66,7 @@ public class Building {
         return null; // We're outside now, so the building is null
     }
 
+    //able to hop around floors without sequentially going through them
     public void goToFloor(int floorNum) {
         if (this.activeFloor == -1) {
             throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
