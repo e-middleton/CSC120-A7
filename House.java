@@ -23,6 +23,14 @@ public class House extends Building{ //inherits from Building class (subclass)
   }
 
   /**
+   * Constructor for House with no parameters, assumes that there is no elevator or dining room, (Some of the houses need renovations)
+   */
+  public House(){
+    super();
+    this.hasDiningRoom = false;
+    this.hasElevator = false;
+  }
+  /**
    * method for checking whether or not the house has a dining room
    * @return boolean true/false the house has or doesn't have a dining room
    */
@@ -30,6 +38,10 @@ public class House extends Building{ //inherits from Building class (subclass)
     return this.hasDiningRoom;
   }
 
+  /**
+   * getter for hasElevator()
+   * @return boolean t/f if there is an elevator in a house
+   */
   public boolean hasElevator(){
     return this.hasElevator;
   }
@@ -70,7 +82,9 @@ public class House extends Building{ //inherits from Building class (subclass)
     }
   }
 
-  //moves out all residents
+  /**
+   * Moves all the residents out of the house, nobody is left behind and the house is now empty of students
+   */
   public void moveOut(){
     int originalResidents = this.nResidents(); //index variable to prevent indexing problems with .size shrinking when people move out
     if(originalResidents!= 0){
@@ -79,7 +93,7 @@ public class House extends Building{ //inherits from Building class (subclass)
         this.residents.remove(0);
       } System.out.println(this.name + " is empty.");
     } else{
-      System.out.println(this.name + " has no residents to move out.");
+      System.out.println(this.name + " has no residents to move out."); //is this a good place to throw an exception? I can't tell if it would be or if this print statement is fine.
     }
   }
 
@@ -118,16 +132,17 @@ public class House extends Building{ //inherits from Building class (subclass)
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-    House morrow = new House ("Morrow", "Paradise Road", 5, false, true);
-    String student = "Jenny";
-    morrow.moveIn(student);
-    String student2 = "Jeremy";
-    String student3 = "Maeve";
-    String student4 = "Huiying";
-    morrow.moveIn(student2);
-    morrow.moveIn(student3);
-    morrow.moveIn(student4);
-    morrow.moveOut();
+    House morrow = new House();
+    //String student = "Jenny";
+    //morrow.moveIn(student);
+    //String student2 = "Jeremy";
+    //String student3 = "Maeve";
+    //String student4 = "Huiying";
+    //morrow.moveIn(student2);
+    //morrow.moveIn(student3);
+    //morrow.moveIn(student4);
+    //morrow.moveOut();
+    System.out.println(morrow.toString());
     
 
   }
