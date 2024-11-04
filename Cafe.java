@@ -56,6 +56,9 @@ public class Cafe extends Building{
         System.out.println("Enjoy your coffee!");
     }
 
+    /**
+     * Overloaded method for sellCoffee() which sells a default coffee order of a sweet latte.
+     */
     public void sellCoffee(){
         if(this.nCups > 0){
             this.nCups -= 1;
@@ -64,10 +67,20 @@ public class Cafe extends Building{
         }
         if(this.nCoffeeOunces - 8 >= 0){
             this.nCoffeeOunces -= 8;
-            System.out.println("Enjoy your black coffee!");
         } else{
             restock(20, 0, 0, 0);
         }
+        if(this.nSugarPackets - 10 >= 0){
+            this.nSugarPackets -= 10;
+        } else{
+            restock(0, 20, 0, 0);
+        }
+        if(this.nCreams - 10 >= 0){
+            this.nCreams -= 10;
+        } else{
+            restock(0, 0, 20, 0);
+        }
+        System.out.println("Enjoy your hazelnut latte!");
     }
 
     /**

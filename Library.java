@@ -27,6 +27,9 @@ public class Library extends Building{
     this.collection.put(title, true);
   }
 
+  /**
+   * overloaded method for addTitle, adds a default set of books (fav books from this last year), perhaps a starter kit for the library 
+   */
   public void addTitle(){
     this.collection.put("Bluebeard", true);
     this.collection.put("We Have Always Lived in the Castle", true);
@@ -115,6 +118,9 @@ public class Library extends Building{
     System.out.println(this.collection.toString());
   }
 
+  /**
+   * Method for showing the available methods for a given building, including the parent methods not explicitly show in the child class
+   */
   public void showOptions() {
     super.showOptions();
     System.out.println(" + addTitle(title) \n + removeTitle(title) \n + checkOut(title) \n + returnBook(title) \n + containsTitle(title) \n + isAvailable(title) \n + printCollection()");
