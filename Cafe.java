@@ -84,6 +84,24 @@ public class Cafe extends Building{
     }
 
     /**
+     * Overloaded sellCoffee(n) so when it has one parameter, it's the size and they order black coffee
+     * @param size how many ounces of coffee are in the order
+     */
+    public void sellCoffee(int size){
+        if(this.nCups > 0){
+            this.nCups -= 1;
+        } else{
+            restock(0, 0, 0, 5);
+        }
+        if(this.nCoffeeOunces - 8 >= 0){
+            this.nCoffeeOunces -= 8;
+        } else{
+            restock(20, 0, 0, 0);
+        }
+        System.out.println("Enjoy your black coffee!");
+    }
+
+    /**
      * Method for restocking the inventory, called if the available amount of an item is too low to make a sale
      * @param nCoffeeOunces number of coffee ounces being added
      * @param nSugarPackets number of sugar packets being added
