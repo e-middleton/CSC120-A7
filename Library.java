@@ -111,6 +111,21 @@ public class Library extends Building{
   }
 
   /**
+   * Overloaded the isAvailable() function to just show all the available titles, 
+   */
+  public void isAvailable(){
+    int size = this.collection.size(); //how many books are in the library
+    String entireLib = this.collection.toString(); //converts the library into a long string
+    String[] books = entireLib.split(","); //splits that string by comma usage
+    for(int i = 0; i < size; i++){ 
+      if((books[i].contains("true"))){ //if each of the key/value pairs has true, it's printed
+        System.out.println(books[i]);
+      }
+    }
+
+  }
+
+  /**
    * Method for printing out the librarys collection, as well as the availability of the books as being true or false
    */
   public void printCollection(){
@@ -135,7 +150,8 @@ public class Library extends Building{
     //String book = "wuthering heights";
     //nielson.containsTitle(book);
     nielson.addTitle();
-    nielson.printCollection();
+    nielson.checkOut("Bluebeard");
+    nielson.isAvailable();
     //nielson.showOptions();
 
       
