@@ -27,6 +27,20 @@ public class Cafe extends Building{
     }
 
     /**
+     * Constructor for the cafe without inventory, sets inventory to a predetermined amount
+     * @param name the name of the cafe
+     * @param address the address of the cafe
+     * @param nFloors how many floors are in the cafe
+     */
+    public Cafe(String name, String address, int nFloors){
+        super(name, address, nFloors);
+        this.nCoffeeOunces = 1000;
+        this.nSugarPackets = 200;
+        this.nCreams = 50;
+        this.nCups = 100;
+    }
+
+    /**
      * Method for selling coffee, restocks the inventory if it is too low for a certain sale
      * @param size number of ounces of coffee are in the order
      * @param nSugarPackets number of sugar packets in the order
@@ -117,6 +131,7 @@ public class Cafe extends Building{
         System.out.println("Don't worry, we just restocked!");
     }
 
+    
     public void goToFloor(int floorNum){
         if(floorNum == 1){
             super.goToFloor(floorNum);
@@ -125,6 +140,9 @@ public class Cafe extends Building{
         }
     }
 
+    /**
+     * Method to print out all the options for methods in this class, including the methods for its parent class Building
+     */
     public void showOptions() {
         super.showOptions();
         System.out.println(" + sellCoffee(size, sugar, cream)");

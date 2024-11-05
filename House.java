@@ -110,6 +110,9 @@ public class House extends Building{ //inherits from Building class (subclass)
     }
   }
 
+  /**
+   * Method for going to different floors, only works and calls the parent method if there is an elevator, otherwise you must sequentially move around floors
+   */
   public void goToFloor(int floorNum) {
     if (this.hasElevator){ //if there is an elevator in the house, you can pop around as u please
       super.goToFloor(floorNum);
@@ -122,6 +125,9 @@ public class House extends Building{ //inherits from Building class (subclass)
     }
   }
 
+  /**
+   * prints out all the methods possible for the class, including the parent class methods.
+   */
   public void showOptions() {
     super.showOptions();
     System.out.println(" + hasDiningRoom() \n + nResidents() \n + moveIn(name) \n + moveOut(name) \n + isResident(person)");
